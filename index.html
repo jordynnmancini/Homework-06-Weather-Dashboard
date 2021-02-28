@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <title>Weather Dashboard</title>
 </head>
 <body>
-    
+    <header class="website-header">
+        <h1> Weather Dashboard</h1>
+    </header>
+<main>
+    <div class="search-container">
+        <nav class="nav flex-column">
+            <a class="navbar-brand">Search for a City:</a>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
+    </br> 
+        <ul class="search-history">
+            search history will show up here
+        </ul>
+    </div>
+    <div class="content-container">
+
+    </div>
+
+</main>     
 </body>
 </html>

@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.website-header {
+    background-color: darkslategray; 
+    padding: 5px; 
+    color: white;  
+}
+
+.website-header h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.search-container {
+    float: left;
+    height: 100vh;
+    padding: 15px;
+    background-color: #F8F8F8; 
+}
+
+.search-history {
+    text-align: left;
+    padding-inline-start: 0px;
+
+}
