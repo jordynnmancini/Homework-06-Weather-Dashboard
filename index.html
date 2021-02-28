@@ -15,23 +15,26 @@
         <h1> Weather Dashboard</h1>
     </header>
 <main>
-    <div class="search-container">
+    <div class="search-container col-12 col-sm-4 col-md-3">
         <nav class="nav flex-column">
             <a class="navbar-brand">Search for a City:</a>
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input id="city-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button id="search-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </nav>
     </br> 
-        <ul class="search-history">
+        <ul id="search-history" class="search-history">
             search history will show up here
         </ul>
     </div>
+    
     <div class="content-container">
 
     </div>
 
-</main>     
+</main> 
+
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

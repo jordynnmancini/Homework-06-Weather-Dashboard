@@ -32,3 +32,19 @@ body {
     padding-inline-start: 0px;
 
 }
+
+.past-searches {
+    list-style-type: none;
+    background-color: white;
+    padding: 10px; 
+    border-width: thin; 
+    border-style: solid;
+    border-color: grey;
+}
+
+
+@media screen and (max-width: 576px) {
+    .search-container {
+      height: auto; 
+    }
+  }
