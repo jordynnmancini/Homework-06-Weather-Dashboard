@@ -18,7 +18,7 @@
     <div class="search-container col-12 col-sm-4 col-md-3">
         <nav class="nav flex-column">
             <a class="navbar-brand">Search for a City:</a>
-            <form class="form-inline">
+            <form id ="city-form" class="form-inline">
                 <input id="city-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button id="search-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
@@ -29,23 +29,25 @@
         </ul>
     </div>
 
-    <div class="content-container">
-        <div id="summary" class="card">
-            <div class="card-body">
-              <h2>City Name</h2> </br>
+    <div id="content-container" class="content-container">
+        <div id="summary-container" class="card">
+            <div id="summary" class="card-body">
+              <h2>City Name <span id="current-date"></span> <span><img src=""></span> </h2> </br>
               <p> Temperature: </p>
               <p> Humidity: </p>
               <p> Wind Speed: </p>
-              <p> UV Index: </p>
+              <p> UV Index: <span id="UV-color"></span> </p>
+              <img id="current-icon" src=""> 
             </div>
           </div>
         </br> 
         <div id="forecast">
             <h2>5 Day Forecast:</h2>
-            <div class="card-group">
+            <div id="card-container" class="card-group">
                 <div class="card text-white bg-primary m-2">
                   <div class="card-body">
                     <h5 class="card-title">Date</h5>
+                    <img src="">
                     <p class="card-text">Temp: </p>
                     <p class="card-text">Humidity:</p>
                   </div>
@@ -53,6 +55,7 @@
                 <div class="card text-white bg-primary m-2">
                     <div class="card-body">
                       <h5 class="card-title">Date</h5>
+                      <img src="">
                       <p class="card-text">Temp: </p>
                       <p class="card-text">Humidity:</p>
                     </div>
@@ -60,6 +63,7 @@
                 <div class="card text-white bg-primary m-2">
                     <div class="card-body">
                       <h5 class="card-title">Date</h5>
+                      <img src="">
                       <p class="card-text">Temp: </p>
                       <p class="card-text">Humidity:</p>
                     </div>
@@ -67,6 +71,7 @@
                   <div class="card text-white bg-primary m-2">
                     <div class="card-body">
                       <h5 class="card-title">Date</h5>
+                      <img src="">
                       <p class="card-text">Temp: </p>
                       <p class="card-text">Humidity:</p>
                     </div>
@@ -74,6 +79,7 @@
                   <div class="card text-white bg-primary m-2">
                     <div class="card-body">
                       <h5 class="card-title">Date</h5>
+                      <img src="">
                       <p class="card-text">Temp: </p>
                       <p class="card-text">Humidity:</p>
                     </div>
