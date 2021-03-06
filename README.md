@@ -11,6 +11,7 @@ When the user searches for a city by name, they are presented with the current w
 I faced trouble with getting the color of the UV index to update based on the number. There is a bug in the code that I can't figure out where it doesn't recognize the class that I am trying to add (JS lines 84-94). 
 
 ## Link to Depoloyed Application 
+https://jordynnmancini.github.io/Homework-06-Weather-Dashboard/ 
 
 ## Demonstration
 This screen recording was taken at night. 
