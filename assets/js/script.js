@@ -4,12 +4,15 @@ const searchButton = document.querySelector("#search-btn");
 const contentContainerEl = document.querySelector("#content-container"); 
 const summmaryEl = document.querySelector("#summary"); 
 const fiveDayContainerEl = document.querySelector("#card-container"); 
-const forecastCardEl = document.querySelector(".card-body"); 
+const forecastCardEl = document.querySelectorAll(".card-body"); 
 
 const APIKey = "0bb86b23bacf5b03d424dc37a26e462b"; 
 
+var currentDay = moment().format('L'); 
+
 const searchHistoryEl = document.querySelector("#search-history"); 
 let cityHistory = JSON.parse(localStorage.getItem("city-history")) || [];   
+
 
 
 //store past searches in Local Storage & show on screen (needs fixing/editing)
@@ -37,10 +40,7 @@ var formSubmitHandler = function (event) {
     if (cityName) {
         displayCurrentDay(cityName); 
         displayForecast(cityName); 
-
-        summmaryEl.textContent = ''; 
-        forecastCardEl.textContent = ''; 
-        searnInputEl.value = ''; 
+        
     } else {
         alert('Please enter a city name'); 
     }
@@ -55,7 +55,7 @@ const displayCurrentDay = function (cityName) {
           response.json().then(function (data) {
             console.log(data);
             // display data
-            var nameAndDate = data.name + " " + "(03/03/21)" 
+            var nameAndDate = data.name + " " + currentDay 
             var cityTitle = document.getElementById("city-name").textContent = nameAndDate; 
 
             var iconurl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
@@ -84,9 +84,34 @@ const displayForecast = function (cityName) {
           response.json().then(function (data) {
             console.log(data);
             // display data
-             
+            const dayOne = document.querySelector("#day-1").textContent = moment().add(1,'days').format('L');
+            const dayTwo = document.querySelector("#day-2").textContent = moment().add(2,'days').format('L');
+            const dayThree = document.querySelector("#day-3").textContent = moment().add(3,'days').format('L');
+            const dayFour = document.querySelector("#day-4").textContent = moment().add(4,'days').format('L');
+            const dayFive = document.querySelector("#day-5").textContent = moment().add(5, 'days').format('L');
 
-            
+            let dayOneIcon = document.getElementById("day-1-icon").src = "http://openweathermap.org/img/w/" + data.list[4].weather[0].icon + ".png";
+            let dayTwoIcon = document.getElementById("day-2-icon").src = "http://openweathermap.org/img/w/" + data.list[12].weather[0].icon + ".png";
+            let dayThreeIcon = document.getElementById("day-3-icon").src = "http://openweathermap.org/img/w/" + data.list[20].weather[0].icon + ".png";
+            let dayFourIcon = document.getElementById("day-4-icon").src = "http://openweathermap.org/img/w/" + data.list[28].weather[0].icon + ".png";
+            let dayFiveIcon = document.getElementById("day-5-icon").src = "http://openweathermap.org/img/w/" + data.list[36].weather[0].icon + ".png";
+
+
+
+            let dayOneTemp = document.getElementById("day-1-temp").textContent = "Temperature:" + " " + data.list[4].main.temp + " °F"; 
+            let dayTwoTemp = document.getElementById("day-2-temp").textContent = "Temperature:" + " " + data.list[12].main.temp + " °F"; 
+            let dayThreeTemp = document.getElementById("day-3-temp").textContent = "Temperature:" + " " + data.list[20].main.temp + " °F"; 
+            let dayFourTemp = document.getElementById("day-4-temp").textContent = "Temperature:" + " " + data.list[28].main.temp + " °F"; 
+            let dayFiveTemp = document.getElementById("day-5-temp").textContent = "Temperature:" + " " + data.list[36].main.temp + " °F"; 
+
+            let dayOneHumidity = document.getElementById("day-1-humid").textContent = "Humidity:" + " " + data.list[4].main.humidity + "%";
+            let dayTwoHumidity = document.getElementById("day-2-humid").textContent = "Humidity:" + " " + data.list[12].main.humidity + "%";
+            let dayThreeHumidity = document.getElementById("day-3-humid").textContent = "Humidity:" + " " + data.list[20].main.humidity + "%";
+            let dayFourHumidity = document.getElementById("day-4-humid").textContent = "Humidity:" + " " + data.list[28].main.humidity + "%";
+            let dayFiveHumidity = document.getElementById("day-5-humid").textContent = "Humidity:" + " " + data.list[36].main.humidity + "%";
+
+
+
           });
         } else {
           alert('Error');
@@ -99,5 +124,7 @@ const displayForecast = function (cityName) {
 }; 
 
 
-displayCurrentDay("Austin"); 
-displayForecast("Austin"); 
+// displayCurrentDay("Austin"); 
+// displayForecast("Austin"); 
+
+cityFormEl.addEventListener('submit', formSubmitHandler);

@@ -32,7 +32,7 @@
     <div id="content-container" class="content-container">
         <div id="summary-container" class="card">
             <div id="summary" class="card-body">
-              <div><h2 id="city-name">City Name</h2> <img id="current-icon" src=""></div></br>
+              <div><h2 id="city-name">City Name <span id="current-date"></span></h2> <img id="current-icon" src=""></div></br>
               <p id="temp"> Temperature: </p>
               <p id="humidity"> Humidity: </p>
               <p id="wind-speed"> Wind Speed: </p>
@@ -45,42 +45,42 @@
             <div id="card-container" class="card-group">
                 <div class="card text-white bg-primary m-2">
                   <div class="card-body">
-                    <h5 class="card-title">Date</h5>
-                    <img src="">
-                    <p class="card-text">Temp: </p>
-                    <p class="card-text">Humidity:</p>
+                    <h5 id="day-1" class="card-title">Date</h5>
+                    <img id="day-1-icon" src="">
+                    <p id="day-1-temp" class="card-text">Temp: </p>
+                    <p id="day-1-humid" class="card-text">Humidity:</p>
                   </div>
                 </div>
                 <div class="card text-white bg-primary m-2">
                     <div class="card-body">
-                      <h5 class="card-title">Date</h5>
-                      <img src="">
-                      <p class="card-text">Temp: </p>
-                      <p class="card-text">Humidity:</p>
+                      <h5 id="day-2" class="card-title">Date</h5>
+                      <img id="day-2-icon" src="">
+                      <p id="day-2-temp" class="card-text">Temp: </p>
+                      <p id="day-2-humid" class="card-text">Humidity:</p>
                     </div>
                 </div>
                 <div class="card text-white bg-primary m-2">
                     <div class="card-body">
-                      <h5 class="card-title">Date</h5>
-                      <img src="">
-                      <p class="card-text">Temp: </p>
-                      <p class="card-text">Humidity:</p>
+                      <h5 id="day-3" class="card-title">Date</h5>
+                      <img id="day-3-icon" src="">
+                      <p id="day-3-temp" class="card-text">Temp: </p>
+                      <p id="day-3-humid" class="card-text">Humidity:</p>
                     </div>
                   </div>
                   <div class="card text-white bg-primary m-2">
                     <div class="card-body">
-                      <h5 class="card-title">Date</h5>
-                      <img src="">
-                      <p class="card-text">Temp: </p>
-                      <p class="card-text">Humidity:</p>
+                      <h5 id="day-4" class="card-title">Date</h5>
+                      <img id="day-4-icon" src="">
+                      <p id="day-4-temp" class="card-text">Temp: </p>
+                      <p id="day-4-humid" class="card-text">Humidity:</p>
                     </div>
                   </div>
                   <div class="card text-white bg-primary m-2">
                     <div class="card-body">
-                      <h5 class="card-title">Date</h5>
-                      <img src="">
-                      <p class="card-text">Temp: </p>
-                      <p class="card-text">Humidity:</p>
+                      <h5 id="day-5" class="card-title">Date</h5>
+                      <img id="day-5-icon" src="">
+                      <p id="day-5-temp" class="card-text">Temp: </p>
+                      <p id="day-5-humid" class="card-text">Humidity:</p>
                     </div>
                   </div>
             </div>
@@ -90,6 +90,8 @@
 
 
 </main> 
-    <script src="./assets/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script type="text/javascript" src="./assets/js/script.js"></script>
 </body>
 </html>
