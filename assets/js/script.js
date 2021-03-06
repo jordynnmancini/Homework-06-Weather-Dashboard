@@ -1,3 +1,4 @@
+// declare variables
 const cityFormEl = document.querySelector("#city-form"); 
 const searchInputEl = document.querySelector("#city-input"); 
 const searchButton = document.querySelector("#search-btn");
@@ -8,31 +9,14 @@ const forecastCardEl = document.querySelectorAll(".card-body");
 
 const APIKey = "0bb86b23bacf5b03d424dc37a26e462b"; 
 
-var currentDay = moment().format('L'); 
+let currentDay = moment().format('L'); 
 
 const searchHistoryEl = document.querySelector("#search-history"); 
 let cityHistory = JSON.parse(localStorage.getItem("city-history")) || [];   
 
 
-
-//store past searches in Local Storage & show on screen (needs fixing/editing)
-// searchButton.addEventListener("click", function(event) {
-//     event.preventDefault(); 
-//     var city = searchInputEl.value.trim();
-//     li = document.createElement("li"); 
-//     li.textContent = city; 
-//     li.classList.add("past-searches"); 
-//     searchHistoryEl.appendChild(li); 
-//     searchInputEl.value = ""; 
-//     cityHistory.push(city);
-
-//     localStorage.setItem('city-history', JSON.stringify(cityHistory));
-// });  
-
-
-
 // get weather in city that the user entered 
-var formSubmitHandler = function (event) {
+let formSubmitHandler = function (event) {
     event.preventDefault();
 
     var cityName = searchInputEl.value.trim(); 
@@ -40,6 +24,9 @@ var formSubmitHandler = function (event) {
     if (cityName) {
         displayCurrentDay(cityName); 
         displayForecast(cityName); 
+        storeHistory(event); 
+
+        searchInputEl.value = ''; 
         
     } else {
         alert('Please enter a city name'); 
@@ -54,7 +41,7 @@ const displayCurrentDay = function (cityName) {
         if (response.ok) {
           response.json().then(function (data) {
             console.log(data);
-            // display data
+            // render data on screen for current day
             var nameAndDate = data.name + " " + currentDay 
             var cityTitle = document.getElementById("city-name").textContent = nameAndDate; 
 
@@ -83,7 +70,7 @@ const displayForecast = function (cityName) {
         if (response.ok) {
           response.json().then(function (data) {
             console.log(data);
-            // display data
+            // render data on screen for 5 day forecast 
             const dayOne = document.querySelector("#day-1").textContent = moment().add(1,'days').format('L');
             const dayTwo = document.querySelector("#day-2").textContent = moment().add(2,'days').format('L');
             const dayThree = document.querySelector("#day-3").textContent = moment().add(3,'days').format('L');
@@ -124,7 +111,30 @@ const displayForecast = function (cityName) {
 }; 
 
 
-// displayCurrentDay("Austin"); 
-// displayForecast("Austin"); 
+
+//store past searches in Local Storage & show on screen (needs fixing/editing)
+let storeHistory = function(event) {
+    event.preventDefault(); 
+    var city = searchInputEl.value.trim();
+    li = document.createElement("li"); 
+    li.textContent = city; 
+    li.classList.add("past-searches"); 
+    searchHistoryEl.appendChild(li); 
+    searchInputEl.value = ""; 
+    cityHistory.push(city);
+
+    localStorage.setItem('city-history', JSON.stringify(cityHistory));
+};  
+
+// make past searches clickable
+let cityButtons = function(event) {
+    let cityButton = event.target.textContent; 
+    console.log(cityButton); 
+
+    displayCurrentDay(cityButton); 
+    displayForecast(cityButton);
+}
+
 
 cityFormEl.addEventListener('submit', formSubmitHandler);
+searchHistoryEl.addEventListener('click', cityButtons); 
