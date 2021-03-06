@@ -26,6 +26,8 @@ let formSubmitHandler = function (event) {
         displayForecast(cityName); 
         storeHistory(event); 
 
+        contentContainerEl.classList.remove("hidden"); 
+
         searchInputEl.value = ''; 
         
     } else {
@@ -51,6 +53,47 @@ const displayCurrentDay = function (cityName) {
             var cityTemp = document.getElementById("temp").textContent = "Temperature:" + " " + data.main.temp + " °F"; 
             var cityHumidity = document.getElementById("humidity").textContent = "Humidity:" + " " + data.main.humidity + "%";
             var cityWindSpeed = document.getElementById("wind-speed").textContent = "Wind Speed:" + " " + data.wind.speed + " MPH"; 
+
+            let lat = data.coord.lat;
+            let lon = data.coord.lon;
+            getUVindex(lat,lon); 
+
+          });
+        } else {
+          alert('Error');
+        }
+      })
+      .catch(function (error) {
+        alert('Unable to locate city');
+      });
+  };
+
+  const getUVindex = function (lat, lon) {
+    var uvUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`
+
+    fetch(uvUrl)
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (data) {
+            console.log(data);
+            // render UV Index data
+            var UVI = document.getElementById("UV-index").textContent = data.current.uvi; 
+
+            const uviSpan = document.querySelector("UV-index"); 
+
+            if (UVI > 2 && UVI < 6) {
+              uviSpan.classList.remove("green"); 
+              uviSpan.classList.add("yellow");
+            }
+            else if (UVI > 5 && UVI < 8) {
+              uviSpan.classList.remove("green"); 
+              uviSpan.classList.add("orange"); 
+            }
+            else if (UVI > 8) {
+              uviSpan.classList.remove("green"); 
+              uviSpan.classList.add("red"); 
+            };
+           
           });
         } else {
           alert('Error');
@@ -60,7 +103,7 @@ const displayCurrentDay = function (cityName) {
         alert('Unable to locate city');
       });
 
-  };
+  }
 
 const displayForecast = function (cityName) {
     var apiForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${APIKey}&units=imperial`

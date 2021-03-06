@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
 </head>
 <body>
@@ -25,18 +25,17 @@
         </nav>
         </br> 
         <ul id="search-history" class="search-history">
-            search history will show up here
         </ul>
     </div>
 
-    <div id="content-container" class="content-container">
+    <div id="content-container" class="content-container hidden">
         <div id="summary-container" class="card">
             <div id="summary" class="card-body">
               <div><h2 id="city-name">City Name <span id="current-date"></span></h2> <img id="current-icon" src=""></div></br>
               <p id="temp"> Temperature: </p>
               <p id="humidity"> Humidity: </p>
               <p id="wind-speed"> Wind Speed: </p>
-              <p id="UV-index"> UV Index: </p>
+              <p> UV Index: <span class="green" id="UV-index"> </span> </p>
             </div>
           </div>
         </br> 

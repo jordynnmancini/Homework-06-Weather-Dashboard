@@ -43,8 +43,28 @@ body {
     border-color: grey;
 }
 
+.hidden {
+    visibility: hidden;
+}
 
+.green {
+    background-color: green;
+    color: white; 
+}
 
+.yellow {
+    background-color: yellow;
+}
+
+.orange {
+    background-color: orange;
+    color: white;
+}
+
+.red {
+    background-color: red;
+    color: white; 
+}
 
 @media screen and (max-width: 576px) {
     .search-container {
