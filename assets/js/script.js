@@ -36,7 +36,7 @@ var formSubmitHandler = function (event) {
 
     if (cityName) {
         displayCurrentDay(cityName); 
-        // displayForecast(cityName); 
+        displayForecast(cityName); 
 
         summmaryEl.textContent = ''; 
         forecastCardEl.textContent = ''; 
@@ -47,26 +47,23 @@ var formSubmitHandler = function (event) {
 }; 
 
 const displayCurrentDay = function (cityName) {
-    var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APIKey}`
+    var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APIKey}&units=imperial`
 
     fetch(apiUrl)
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
             console.log(data);
-            var iconurl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-            console.log(iconurl); 
-            var weatherIcon = document.getElementById("current-icon").src = iconurl; 
-
             // display data
-            var nameAndDate = data.name + " " + "(03/03/21)" + weatherIcon
-            var cityTitleEl = document.createElement("h2"); 
-            cityTitleEl.textContent = nameAndDate;
-            summmaryEl.appendChild(cityTitleEl); 
+            var nameAndDate = data.name + " " + "(03/03/21)" 
+            var cityTitle = document.getElementById("city-name").textContent = nameAndDate; 
 
-            
+            var iconurl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+            var weatherIcon = document.getElementById("current-icon").src = iconurl;
 
-          
+            var cityTemp = document.getElementById("temp").textContent = "Temperature:" + " " + data.main.temp + " °F"; 
+            var cityHumidity = document.getElementById("humidity").textContent = "Humidity:" + " " + data.main.humidity + "%";
+            var cityWindSpeed = document.getElementById("wind-speed").textContent = "Wind Speed:" + " " + data.wind.speed + " MPH"; 
           });
         } else {
           alert('Error');
@@ -76,8 +73,31 @@ const displayCurrentDay = function (cityName) {
         alert('Unable to locate city');
       });
 
-
   };
+
+const displayForecast = function (cityName) {
+    var apiForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${APIKey}&units=imperial`
+
+    fetch(apiForecastUrl)
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (data) {
+            console.log(data);
+            // display data
+             
+
+            
+          });
+        } else {
+          alert('Error');
+        }
+      })
+      .catch(function (error) {
+        alert('Unable to locate city');
+      });
+   
+}; 
 
 
 displayCurrentDay("Austin"); 
+displayForecast("Austin"); 
